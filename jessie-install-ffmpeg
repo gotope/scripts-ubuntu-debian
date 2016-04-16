@@ -1,0 +1,52 @@
+1. Configure APT to use the deb-multimedia repository
+
+Note: the commands in this section must be run as root, sudo
+
+1.1) Add the following to the bottom of /etc/apt/sources.list:
+deb http://www.deb-multimedia.org jessie main non-free
+deb-src http://www.deb-multimedia.org jessie main non-free
+1.2) Refresh apt's package database, by typing:
+apt-get update
+1.3) Allow apt to trust deb-multimedia's key, by typing:
+apt-get install deb-multimedia-keyring
+1.4) Refresh apt's package database again, by typing:
+apt-get update
+2. Remove ffmpeg Debian packge
+
+Note: the commands in this section must be run as root
+
+2.1) Remove the ffmpeg package, if it is installed, to avoid confusion caused by having two versions of ffmpeg installed and potential conflicts with the packages that will be installed in the next step:
+apt-get remove ffmpeg
+3. Install Libraries
+
+Note: the commands in this section must be run as root
+
+3.1) Install library packages and build tools:
+apt-get install build-essential libmp3lame-dev libvorbis-dev libtheora-dev libspeex-dev yasm pkg-config libfaac-dev libopenjpeg-dev libx264-dev
+4. Install Ffmpeg
+
+Note: we recommend that the commands in this section are run as a non-root user (although they should still work if run as root)
+
+4.1) Download and extract the ffmpeg source code:
+mkdir software
+
+cd software
+
+wget http://ffmpeg.org/releases/ffmpeg-2.7.2.tar.bz2
+
+cd ..
+
+mkdir src
+
+cd src
+
+tar xvjf ../software/ffmpeg-2.7.2.tar.bz2
+4.2) Move into the source directory:
+cd ffmpeg-2.7.2
+4.3) Configure, build and install:
+./configure --enable-gpl --enable-postproc --enable-swscale --enable-avfilter --enable-libmp3lame --enable-libvorbis --enable-libtheora --enable-libx264 --enable-libspeex --enable-shared --enable-pthreads --enable-libopenjpeg --enable-libfaac --enable-nonfree
+
+make
+
+sudo make install
+4.4) Run "/sbin/ldconfig" as root.
