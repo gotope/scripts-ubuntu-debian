@@ -50,5 +50,13 @@ sudo ldconfig
 
 
 # EXECUTE SOME OPENCV EXAMPLES AND COMPILE A DEMONSTRATION
+Example using OpenCV
+cd /usr/local/share/OpenCV/samples/c
 
+– Execute following commands
+sudo chmod +x build_all.sh
+sudo ./build_all.sh
+./facedetect "/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml" lena.jpg
+or
+./facedetect --cascade="/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml" lena.jpg
 # To complete this step, please visit 'http://milq.github.io/install-opencv-ubuntu-debian'.
