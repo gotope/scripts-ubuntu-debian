@@ -1,13 +1,13 @@
-# KEEP UBUNTU OR DEBIAN UP TO DATE
+#remove orginal ffmpeg x264
+sudo apt-get -qq remove ffmpeg x264 libx264-dev
 
+# KEEP UBUNTU OR DEBIAN UP TO DATE
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
 
-
 # INSTALL THE DEPENDENCIES
-
 # Build tools:
 sudo apt-get install -y build-essential cmake
 
